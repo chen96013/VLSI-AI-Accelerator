@@ -13,6 +13,11 @@
 
 ## HARDWARE  
 ### CPU  
+Our system is totally controled by a RISC-V CPU.
+  
+  
+  
+  
 ### Accelerator  
 > This accelerator's design is based on paper an IEEE paper  
 > Topic: An energy‑efficient convolution unit for depthwise separable convolutional neural networks  
