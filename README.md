@@ -5,18 +5,16 @@
   - [HARDWARE](#hardware)
     - [CPU](#cpu)
     - [Accelerator](#accelerator)
-    - [AXI interface](#axi-interface)
+    - [AXI bus](#axi-bus)
+    - [DMA](#dma)
+    - [FFT](#fft)
   - [SOFTWARE](#software)
-    - [Syetem program](#syetem-program)
+    - [Program and Compiler](#program-and-compiler)
     - [AI model train and quantize](#ai-model-train-and-quantize)
-    - [Compiler](#compiler)
 
 ## HARDWARE  
 ### CPU  
-Our system is totally controled by a RISC-V CPU.
-  
-  
-  
+Our system is totally controled by a RISC-V CPU. Supporting 64 bit memory accessing.  
   
 ### Accelerator  
 > This accelerator's design is based on paper an IEEE paper  
@@ -41,10 +39,19 @@ Thus, these accelerators often shows low efficiency when running pointwise convo
 In this paper's accelerator's design, the most focus objective is to accelerate pointwise convolution, but this show another problem.
 That is, the systolic array shows an obvious low efficiency when computing normal convolution and depthwise convolution.  
 Our target is to make the data flow in systolic array better, which won't show such a poor computation efficieny when computing normal convolution and depthwise convolution.
-
-
-### AXI interface  
+  
+### AXI bus  
+AXI bus is a well-known (AMBA) Advanced Microcontroller Bus Architecture. for connecting different part of computing modules, we decided to use AXI because they are in different clock rate. For connecting the module in different clock domains, AXI is a better choice than AHB. All modules can transmit their information through one AXI bus, including data and controling signals.  
+  
+### DMA  
+DMA (Direct Memory Access) is a high performace design for data accessing. With DMA, CPU do not need to using many interupt to deal with data accessing. DMA helps moving data for the computing unit through our AXI bus, then our computing unit can focurs most of power and time on high performance computing.  
+  
+### FFT  
+A wide used picture compression technique JPEG uses CFT and low pass filter to compression the picture. In most of cases, memory bandwidth is the bottleneck of AI accelerator. We purpose to compression the pictures waited for prediction by FFT and filtered the high frequency noise before transmit them through AXI to computing unit.  By this way we hope to increase the bus bandwidth and improve our pediction FPS.  
+  
 ## SOFTWARE  
-### Syetem program  
+  
+### Program and Compiler
+  
 ### AI model train and quantize  
-### Compiler  
+  
