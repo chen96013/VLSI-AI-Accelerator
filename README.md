@@ -1,7 +1,10 @@
 # AI-Acceleration-System  
 >This is a final proect in NCKU VLSI system design. Our team will design an AI acceleration system, which is composed of a RISC-V CPU, Systolic array based accelerator, model training and quantization flow and model compiler.  
+## System overview
+![proposal](https://github.com/chen96013/VLSI-AI-Accelerator/assets/70428182/3ddd2f66-4d7f-4154-b828-24088fba160b)
 
 - [AI-Acceleration-System](#ai-acceleration-system)
+  - [System overview](#system-overview)
   - [HARDWARE](#hardware)
     - [CPU](#cpu)
     - [Accelerator](#accelerator)
